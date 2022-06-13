@@ -1,0 +1,71 @@
+﻿.data
+#Array de nºos para duplicar, (mirame soy un comentario en el segmento de datos)
+arr: .word 1,2,4,8,16,32
+arrlen: .word 6
+
+nueva_linea: .stringz "\n"
+espacio: .stringz " "
+mensaje: .stringz "El array duplicado es: "
+mensaje_ini: .stringz "El array en memoria es: "
+
+.code
+#Leer el array de memoria, duplicarlo y mostrarlo por pantalla
+movi,$s2,0
+lad,$a1,mensaje_ini
+jal PRINT_STRING
+jal PRINT_NL
+lad,$g0,arr
+lad,$g1,arrlen
+lw,$g1,0($g1)
+movi,$g3,0
+
+LOOP_1:
+lw,$a1,0($g0)
+jal PRINT
+jal PRINT_ESP
+addi,$g0,$g0,8
+subi,$g1,$g1,1
+bnq,$g1,$g3,LOOP_1
+jal PRINT_NL
+
+lad,$a1,mensaje
+jal PRINT_STRING
+jal PRINT_NL
+lad,$s0,arrlen
+lad,$s1,arr
+lw,$s0,0($s0)
+
+LOOP_2:
+lw,$g0,0($s1)
+multi,$g0,$a1,2
+jal PRINT
+jal PRINT_ESP
+addi,$s1,$s1,8
+subi,$s0,$s0,1
+bnq,$s0,$s2,LOOP_2
+
+END:
+jal PRINT_NL
+halt
+
+PRINT_ESP:
+movi,$a0,6
+lad,$a1,espacio
+syscall
+jr $ra
+
+PRINT_NL:
+movi,$a0,6
+lad,$a1,nueva_linea
+syscall
+jr $ra
+
+PRINT_STRING:
+movi,$a0,6
+syscall
+jr $ra
+
+PRINT:
+movi,$a0,1
+syscall
+jr $ra

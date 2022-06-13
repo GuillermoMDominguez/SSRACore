@@ -1,0 +1,7 @@
+﻿movi,$g1,3579
+movi,$g2,-1
+randomLabel:
+add,2,1,9
+movi,8,1
+syscall
+halt

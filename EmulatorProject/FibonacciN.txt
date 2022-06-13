@@ -1,0 +1,13 @@
+﻿movi,5,1
+movi,1,42
+movi,2,0
+movi,3,1
+add,2,3,4
+mov,3,2
+mov,4,3
+subi,1,1,1
+bnq,5,1,-5
+mov,2,9
+movi,8,1
+syscall
+halt

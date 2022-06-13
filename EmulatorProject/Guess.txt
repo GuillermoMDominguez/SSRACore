@@ -1,0 +1,76 @@
+.data
+request_str: .stringz "Introduce tu respuesta (nº entero entre 1 y 101)\n"
+err_str: .stringz "Debe ser un nº entre 0 y 100\n"
+greater_str: .stringz "El nº es mayor que el introducido\n"
+less_str: .stringz "El nº es menor que el introducido\n"
+victory_str: .stringz "¡Tu resspuesta es correcta!\n"
+tries_str: .stringz "Has necesitado un total de "
+tries_last_str: .stringz " intentos\n"
+
+.code
+main:
+#Start, seed rng and generate random number
+movi $a0 15
+syscall
+movi $a0 14
+syscall
+movi $a0 13 #Comentario en la línea
+syscall
+mov $a1 $s0
+modi $s0 $s0 101
+
+setup:
+movi $g6 100
+movi $g7 0
+movi $ac 0
+
+loop:
+jal request_n
+mov $a1 $g0
+bgt $g0 $g6 incorrect_number
+blt $g0 $g7 incorrect_number
+acc 1
+bgt $s0 $g0 more
+blt $s0 $g0 less
+#If we are here it means that the guess was correct
+end:
+lad $a1 victory_str
+jal print_str
+lad $a1 tries_str
+jal print_str
+mov $ac $a1
+movi $a0 2
+syscall
+lad $a1 tries_last_str
+jal print_str
+halt
+
+more:
+lad $a1 greater_str
+jal print_str
+jmp loop
+
+less:
+lad $a1 less_str
+jal print_str
+jmp loop
+
+incorrect_number:
+lad $a1 err_str
+jal print_str
+jmp loop
+
+#Read a int from user, result is in register a1
+request_n:
+lad $a1 request_str
+push $ra
+jal print_str
+pop $ra
+movi $a0 7
+syscall
+jr $ra
+
+print_str:
+movi $a0 6
+syscall
+jr $ra

@@ -1,0 +1,11 @@
+﻿.data
+
+msg: .stringz "Hola desde mi arquitectura de CPU eñe\n"
+
+.code
+
+main:
+lad,$a1,msg
+movi,$a0,6
+syscall
+halt

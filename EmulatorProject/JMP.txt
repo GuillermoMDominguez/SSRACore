@@ -1,0 +1,15 @@
+﻿movi,$g2,3
+movi,$g3,-7
+jmp,MULTIPLY
+END:
+nop
+halt
+MULTIPLY:
+mul,$g2,$g3,$g1
+jmp,PRINT
+movi,$g1,0
+PRINT:
+mov,$g1,$a1
+movi,$a0,1
+syscall
+jmp,END
