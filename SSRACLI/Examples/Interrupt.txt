@@ -1,0 +1,43 @@
+.data
+
+saludo: .stringz "Hola desde main\n"
+saludo_int: .stringz "Hola desde la interrupcion\n"
+saludo_int3: .stringz "Saludos desde la tercera interrupcion\n"
+despedida: .stringz "Programa finalizado (¿correctamente?)\n"
+despedida_int: .stringz "Saliendo de la interrupcion\n"
+
+.code
+
+main:
+lad $a1 saludo
+jal print_str
+break 0
+lad $a1 despedida
+jal print_str
+halt
+
+
+isr_0:
+sir 0
+lad $a1 saludo_int
+jal print_str
+movi $g0 2
+movi $g1 0
+#Causa una interrupción de división por 0, pero es ignorada debido a la instrucción sir
+break 2
+lad $a1 despedida_int
+jal print_str
+sir 1
+rst
+
+isr_2:
+sir 0
+lad $a1 saludo_int3
+jal print_str
+sir 1
+rst
+
+print_str:
+movi $a0 6
+syscall
+jr $ra

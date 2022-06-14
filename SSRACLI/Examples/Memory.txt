@@ -1,0 +1,33 @@
+﻿#Load base pointer on g1
+movi,$g1,50
+movi,$g2,-1500
+movi,$a0,3
+#Print word on memory address 150
+movi,$a1,150
+sw,$g2,100($g1)
+syscall
+#Read from memory, multiply and print the result
+lw,$g4,100($g1)
+multi,$g4,$a1,-3
+jal PRINT
+#Test the stack
+jal PRINTSTACK
+push,$g2
+jal PRINTSTACK
+pop,$g6
+jal PRINTSTACK
+mov,$g6,$a1
+jal PRINT
+halt
+
+PRINT:
+movi,$a0,1
+syscall
+jr,$ra
+#Las rutinas no deberian escribir en los registros s0-s3
+PRINTSTACK:
+mov,$sp,$a1
+mov,$ra,$s0
+jal PRINT
+mov,$s0,$ra
+jr $ra

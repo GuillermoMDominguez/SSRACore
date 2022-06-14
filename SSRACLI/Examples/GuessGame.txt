@@ -1,0 +1,52 @@
+﻿.data
+nueva_linea: .stringz "\n"
+espacio: .stringz " "
+saludo: .stringz "Bienvenido al juego de adivina el número, introduce un nº positivo\n(El juego te dira si estás por arriba o por abajo)0"
+prompt: .stringz "[Introduce un nº]\n"
+
+
+.code
+#Generar nº aleatorio
+movi,$a0,15
+syscall
+movi,$a0,14
+syscall
+movi,$a0,13
+syscall
+mult,$a1,$sa1,$s0
+modi,$s0,$s0,100
+addi,$s0,$s0,1
+
+
+
+
+END:
+jal PRINT_NL
+halt
+
+READ:
+movi,$a0,7
+syscall
+jr $ra
+
+PRINT_ESP:
+movi,$a0,6
+lad,$a1,espacio
+syscall
+jr $ra
+
+PRINT_NL:
+movi,$a0,6
+lad,$a1,nueva_linea
+syscall
+jr $ra
+
+PRINT_STRING:
+movi,$a0,6
+syscall
+jr $ra
+
+PRINT:
+movi,$a0,1
+syscall
+jr $ra

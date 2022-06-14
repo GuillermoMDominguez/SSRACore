@@ -1,0 +1,46 @@
+﻿#Programa para encontrar los n primeros nº primos
+START:
+movi,$s0,10000
+movi,$s1,2
+movi,$s2,1
+movi,$a1,2
+jal PRINT
+LOOP:
+mov,$s1,$a2
+jal PRIM_TEST
+beq,$a3,$g0,END_BODY
+addi,$s3,$s3,1
+END_BODY:
+addi,$s1,$s1,1
+bgt,$s0,$s1,LOOP
+mov,$s3,$a1
+jal PRINT
+movi,$g0,-100
+halt
+
+#Proceso que comprueba si un numero en a2 es primo,si lo es, lo muestra por pantalla
+PRIM_TEST:
+movi,$g0,0
+movi,$g2,2
+PRIM_LOOP:
+mod,$a2,$g2,$g3
+addi,$g2,$g2,1
+beq,$g3,$g0,PRIM_EXIT
+beq,$g2,$a2,PRIM_SUCCESS
+jmp PRIM_LOOP
+PRIM_SUCCESS:
+movi,$a3,1
+mov,$a2,$a1
+push $ra
+jal PRINT
+pop $ra
+jr $ra
+
+PRIM_EXIT:
+movi,$a3,0
+jr $ra
+
+PRINT:
+movi,$a0,1
+syscall
+jr,$ra

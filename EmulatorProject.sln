@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30717.126
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SSRAEmulator", "EmulatorProject\SSRAEmulator.csproj", "{14C3207B-C367-4213-B995-36B18BBD83BA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SSRAEmulator", "SSRAEmulator\SSRAEmulator.csproj", "{14C3207B-C367-4213-B995-36B18BBD83BA}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SSRACLI", "..\EmulatorCPU\EmulatorCPU\SSRACLI.csproj", "{8F9EB4D2-9DB9-4597-9F8E-00E1287D1E32}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SSRACLI", "SSRACLI\SSRACLI.csproj", "{242A5B0C-9823-4CFC-BFEE-B169BAEC035A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,10 +17,10 @@ Global
 		{14C3207B-C367-4213-B995-36B18BBD83BA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{14C3207B-C367-4213-B995-36B18BBD83BA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{14C3207B-C367-4213-B995-36B18BBD83BA}.Release|Any CPU.Build.0 = Release|Any CPU
-		{8F9EB4D2-9DB9-4597-9F8E-00E1287D1E32}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{8F9EB4D2-9DB9-4597-9F8E-00E1287D1E32}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{8F9EB4D2-9DB9-4597-9F8E-00E1287D1E32}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{8F9EB4D2-9DB9-4597-9F8E-00E1287D1E32}.Release|Any CPU.Build.0 = Release|Any CPU
+		{242A5B0C-9823-4CFC-BFEE-B169BAEC035A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{242A5B0C-9823-4CFC-BFEE-B169BAEC035A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{242A5B0C-9823-4CFC-BFEE-B169BAEC035A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{242A5B0C-9823-4CFC-BFEE-B169BAEC035A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
