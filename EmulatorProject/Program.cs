@@ -18,7 +18,8 @@ namespace EmulatorProject
             }
             clock.Stop();
             var assemblyTime = clock.ElapsedMilliseconds;
-            string program = uut.PrintProgram("Guess");
+            var selected = "Guess";
+            string program = uut.PrintProgram(selected);
             Console.WriteLine(program);
             /*
             asb.EmitInmediate(Opcode.MOVI, 1, 3);
