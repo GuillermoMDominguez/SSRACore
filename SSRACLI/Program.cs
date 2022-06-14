@@ -1,9 +1,9 @@
 ﻿using System;
 using System.IO;
 using System.Reflection;
-using EmulatorProject;
+using SSRAEmulator;
 
-namespace EmulatorCPU
+namespace SSRACLI
 {
     class Program
     {

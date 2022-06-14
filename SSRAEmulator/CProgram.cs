@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace EmulatorProject
+namespace SSRAEmulator
 {
     internal class CProgram
     {
